@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.page {
+    background-color: #F1F1F2;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+}
+
+.home-container a {
+    color: rgb(255, 255, 255);
+}
