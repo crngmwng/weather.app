@@ -4,12 +4,38 @@
 }
 
 .page {
-    background-color: #F1F1F2;
+    background-color: #f2f6f5;
+    /* #F1F1F2 */
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: auto;
 }
 
-.home-container a {
-    color: rgb(255, 255, 255);
+.page a {
+    color: white;
+}
+
+
+.block {
+    background-color: #c8dad3;
+    /* #B2DBD5 */
+    height: 70px;
+    /* width: 180px; */
+    margin-bottom: 5px;
+    
+}
+
+
+.town-item {
+    background-color: #006C84;
+    /* #006C84 */
+    /* height: 320px; */
+    /* width: 180px; */
+    text-align: center;
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+
+#wicon {
+    margin-top: -15px;
 }
