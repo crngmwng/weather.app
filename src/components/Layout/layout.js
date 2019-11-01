@@ -8,16 +8,16 @@ const Layout = ({children}) => (
     
     <div className='page'>
         <Navbar/>
-        <Jumbotron title="hello" subtitle="meow"/>
+        <Jumbotron title="hello" subtitle="hi"/>
 
-            {/* <div className='row'>  */}
-                {/* <div className='col-md-3'> */}
-                    {/* Sidebar */}
-                {/* </div> */}
-                {/* <div className='col-md-9'> */}
+            <div className='row'> 
+                <div className='col-md-3'>
+                    Sidebar
+                </div>
+                <div className='col-md-9'>
                     {children}
-                {/* </div> */}
-            {/* </div> */}
+                </div>
+            </div>
 
         <Footer/>
     </div>

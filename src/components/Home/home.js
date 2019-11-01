@@ -7,9 +7,13 @@ import Layout from '../Layout/layout.js'
 import {
     fetchTowns
   } from '../../actions'
+
+//   import {getTowns} from '../../selectors'
 class Home extends Component{ 
     componentDidMount() {
-       this.props.fetchTowns()
+        this.props.fetchTowns()
+        
+
     }
 
     renderTown(town, index) {
@@ -21,11 +25,15 @@ class Home extends Component{
     }
 
     render() {
-        const {towns} = this.props
+        const {towns} = this.props;
         console.log(towns)
         return(
             <Layout>
-                
+                {towns && 
+                <div className='books row'>
+                    {towns.map((town, index) => this.renderTown(town, index))}
+                </div>
+            }
             </Layout> 
         )
     }
