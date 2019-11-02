@@ -19,7 +19,7 @@
 .block {
     background-color: #c8dad3;
     /* #B2DBD5 */
-    height: 70px;
+    height: 80px;
     /* width: 180px; */
     margin-bottom: 5px;
     
@@ -36,6 +36,3 @@
     border-radius: 10px;
 }
 
-#wicon {
-    margin-top: -15px;
-}

@@ -9,36 +9,39 @@ import {
     fetchTowns
   } from '../../actions'
 
-//   import {getTowns} from '../../selectors'
+  import {getTowns} from '../../selectors'
 class Home extends Component{ 
+    constructor(props) {
+        super(props);
+        this.changeText = this.changeText.bind(this)
+    }
     componentDidMount() {
         this.props.fetchTowns()
         
 
     }
+    changeText() {
+        console.log('mew')
+    }
 
     renderTown(town, index) {
         const temp = Math.round(town.main.temp)
         return(
-            <div className="town-item col-md-2 " key={index}><Link to={`/${town.name}`}>{town.name} </Link>
+            <div className="town-item col-md-2 " key={index} onMouseOver={() => this.changeText()}><Link to={`/${town.name}`}>{town.name} </Link>
                 <div className="row block align-items-center"> 
                     <div className='col'>{temp} °C</div>
                 </div>
 
                 <div className="row block align-items-center"> 
-                    <div className='col'><img id="wicon" src={`http://openweathermap.org/img/wn/${town.weather[0].icon}@2x.png`} alt="Weather icon"  ></img></div>
+                    <div className='col'><img id="wicon" src={`http://openweathermap.org/img/wn/${town.weather[0].icon}@2x.png`} alt="Weather icon" height="85" width="85" ></img></div>
                 </div>
-{/* 
-                <div className="row block "> 
-                    <div className='col'>a</div>
-                </div> */}
             </div>
         )
     }
 
     render() {
         const {towns} = this.props;
-        console.log(towns)
+        console.log( towns)
         return(
             <Layout>
                 {towns && 
@@ -52,7 +55,7 @@ class Home extends Component{
 }
 
 const mapStateToProps = (state) => ({
-    towns: state.towns
+    towns: getTowns(state)
 })
   
 const mapDispatchToProps = {

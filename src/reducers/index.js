@@ -1,15 +1,11 @@
-import * as R from 'ramda'
+import {combineReducers} from 'redux'
 
-const initialState = { }
+import towns from './towns'
+import townsPage from './townsPage'
 
-export default (state = initialState, {type, payload}) => {
-  switch (type) {
-    case "FETCH_TOWNS_SUCCESS":
-     return Object.assign({}, state, {
-       towns: payload
-     })
+const rootReducer = combineReducers({
+  towns,
+  townsPage
+})
 
-      default:
-      return state;
-  }
-}
+export default rootReducer

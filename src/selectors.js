@@ -1,9 +1,9 @@
 import * as R from 'ramda'
 
-const getTownById = (state, id) => R.prop(id, state.towns)
+const getTownByName = (state, name) => state.towns[name]
 
 export const getTowns = state => {
-  const towns = R.map(id => getTownById(state, id), state.townsPage.ids)
+  const towns = R.map(name => getTownByName(state, name), state.townsPage.names)
 
   return towns
-}
+} 
