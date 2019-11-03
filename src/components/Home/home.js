@@ -6,28 +6,23 @@ import Layout from '../Layout/layout.js'
 
 
 import {
-    fetchTowns
+    fetchTowns,
   } from '../../actions'
 
   import {getTowns} from '../../selectors'
-class Home extends Component{ 
-    constructor(props) {
-        super(props);
-        this.changeText = this.changeText.bind(this)
-    }
+class Home extends Component{
     componentDidMount() {
         this.props.fetchTowns()
         
 
     }
-    changeText() {
-        console.log('mew')
-    }
+    
 
     renderTown(town, index) {
         const temp = Math.round(town.main.temp)
         return(
-            <div className="town-item col-md-2 " key={index} onMouseOver={() => this.changeText()}><Link to={`/${town.name}`}>{town.name} </Link>
+            <div className="town-item col-md-2 "
+                 key={index} ><Link to={`/details/${town.name}`}>{town.name} </Link>
                 <div className="row block align-items-center"> 
                     <div className='col'>{temp} °C</div>
                 </div>
@@ -41,14 +36,12 @@ class Home extends Component{
 
     render() {
         const {towns} = this.props;
-        console.log( towns)
+        // console.log( towns)
         return(
             <Layout>
-                {towns && 
                 <div className='row justify-content-around'>
                     {towns.map((town, index) => this.renderTown(town, index))}
                 </div>
-            }
             </Layout> 
         )
     }

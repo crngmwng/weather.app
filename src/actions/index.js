@@ -1,10 +1,13 @@
 import {
     FETCH_TOWNS_START,
     FETCH_TOWNS_SUCCESS,
-    FETCH_TOWNS_FAILURE
+    FETCH_TOWNS_FAILURE,
+    FETCH_HOURLY_START,
+    FETCH_HOURLY_SUCCESS,
+    FETCH_HOURLY_FAILURE
 } from './actionTypes'
 
-import fetchTownsApi from '../api'
+import {fetchHourlyWeatherApi} from '../api'
 
 
 export const fetchTowns = () => async dispatch => {
@@ -19,8 +22,7 @@ export const fetchTowns = () => async dispatch => {
             payload: towns
           })
         })
-    }
-    catch (err) {
+    }catch (err) {
       dispatch({
         type: FETCH_TOWNS_FAILURE,
         payload: err,
@@ -29,4 +31,23 @@ export const fetchTowns = () => async dispatch => {
     }
   }
 
+  export const fetchHourlyWeather = (name) => async dispatch => {
+    dispatch({type: FETCH_HOURLY_START})
   
+    try {
+      fetch(`https://api.weatherbit.io/v2.0/forecast/hourly?city=${name}&key=ced73555abfb464ebcb5d7e77f5be270&hours=24`)
+        .then(res => res.json())
+        .then(body => {
+            dispatch({
+              type: FETCH_HOURLY_SUCCESS,
+              payload: {body}
+            })
+          })
+    } catch (err) {
+      dispatch({
+        type: FETCH_HOURLY_FAILURE,
+        payload: err,
+        error: true
+      })
+    }
+  }

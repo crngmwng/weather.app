@@ -11,6 +11,8 @@ export default (state = initialState, {type, payload}) => {
     case FETCH_TOWNS_SUCCESS:
       const newValues = R.indexBy(R.prop("name"), payload)
       return R.merge(state, newValues)
+      
+      default:
+      return state
     }
-    return state
-  }
+}
