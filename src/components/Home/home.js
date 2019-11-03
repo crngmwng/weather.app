@@ -22,13 +22,15 @@ class Home extends Component{
         const temp = Math.round(town.main.temp)
         return(
             <div className="town-item col-md-2 "
-                 key={index} ><Link to={`/details/${town.name}`}>{town.name} </Link>
-                <div className="row block align-items-center"> 
-                    <div className='col'>{temp} °C</div>
-                </div>
+                    key={index} ><Link to={`/details/${town.name}`}>{town.name} </Link>
+            <div className={index}>
+                    <div className="row block align-items-center"> 
+                        <div className='col'>{temp} °C</div>
+                    </div>
 
-                <div className="row block align-items-center"> 
-                    <div className='col'><img id="wicon" src={`http://openweathermap.org/img/wn/${town.weather[0].icon}@2x.png`} alt="Weather icon" height="85" width="85" ></img></div>
+                    <div className="row block align-items-center"> 
+                        <div className='col'><img id="wicon" src={`http://openweathermap.org/img/wn/${town.weather[0].icon}@2x.png`} alt="Weather icon" height="85" width="85" ></img></div>
+                    </div>
                 </div>
             </div>
         )

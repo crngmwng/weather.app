@@ -7,8 +7,3 @@ export const getTowns = state => {
 
   return towns
 } 
-
-
-// export const getHourlyWeather = state => {
-//   const weather = R.map()
-// }
