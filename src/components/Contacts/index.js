@@ -1,6 +1,6 @@
 import React from 'react';
 import "./Contacts.css"
-import Layout from '../Layout/layout.js'
+import Layout from '../Layout'
 
 const Contacts = () => {
     return(

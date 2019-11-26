@@ -1,15 +1,18 @@
 import * as R from 'ramda'
 
 import {
-    FETCH_HOURLY_SUCCESS
+    FETCH_FOR_WEEK_SUCCESS
   } from '../actions/actionTypes'
 
-const initialState = {  }
+const initialState = { 
+ }
 
 export default (state = initialState, {type, payload}) => {
   switch (type) {
-    case FETCH_HOURLY_SUCCESS:
-      return R.merge(state, payload.body.data)
+    case FETCH_FOR_WEEK_SUCCESS:
+      return R.merge(state,
+        R.indexBy(R.prop("datetime"), payload.body.data)
+    )
       
       default:
       return state

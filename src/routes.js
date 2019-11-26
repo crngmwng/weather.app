@@ -4,6 +4,7 @@ import Home from './components/Home/home.js'
 import About from './components/About/'
 import Contacts from './components/Contacts/'
 import HourlyWeather from './components/HourlyWeather/'
+import WeatherForWeek from './components/WeatherForWeek/'
 
 const Routes = () => {
   return(
@@ -11,7 +12,8 @@ const Routes = () => {
       <div>
         <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/details/:name" component={HourlyWeather} />
+        <Route path="/hourly/:name" component={HourlyWeather} />
+        <Route path="/week/:name" component={WeatherForWeek} />
         <Route path="/about" component={About} />
         <Route path="/contacts" component={Contacts} />
         </Switch>

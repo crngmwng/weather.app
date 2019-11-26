@@ -5,16 +5,11 @@
 
 .page {
     background-color: #f2f6f5;
-    /* #F1F1F2 */
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: auto;
 }
 
-.page a {
-    color: white;
+.container a {
+    color: #006C84;
 }
-
 
 .block {
     background-color: #c8dad3;
@@ -22,17 +17,19 @@
     height: 80px;
     /* width: 180px; */
     margin-bottom: 5px;
-    
+    position: relative;
+    color: black;
 }
 
+#wicon {
+    position: absolute;
+    margin-top: -50px;
+    margin-left: -50px;
+}
 
 .town-item {
     background-color: #006C84;
-    /* #006C84 */
-    /* height: 320px; */
-    /* width: 180px; */
     text-align: center;
-    margin-bottom: 30px;
     border-radius: 10px;
+    color: white;
 }
-

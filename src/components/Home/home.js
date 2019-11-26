@@ -2,47 +2,58 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import { Link } from 'react-router-dom';
 import './Home.css'
-import Layout from '../Layout/layout.js'
+import Layout from '../Layout'
+import SingleTown from './singleTown.js'
 
 
 import {
-    fetchTowns,
+    fetchTowns
   } from '../../actions'
 
   import {getTowns} from '../../selectors'
 class Home extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            isHovered: {}
+        }
+    }
+
     componentDidMount() {
         this.props.fetchTowns()
         
 
     }
-    
 
-    renderTown(town, index) {
-        const temp = Math.round(town.main.temp)
-        return(
-            <div className="town-item col-md-2 "
-                    key={index} ><Link to={`/details/${town.name}`}>{town.name} </Link>
-            <div className={index}>
-                    <div className="row block align-items-center"> 
-                        <div className='col'>{temp} °C</div>
-                    </div>
+    handleMouseEnter = index => {
+        this.setState(prevState => {
+          return { isHovered: { ...prevState.isHovered, [index]: true } };
+        });
+    };
 
-                    <div className="row block align-items-center"> 
-                        <div className='col'><img id="wicon" src={`http://openweathermap.org/img/wn/${town.weather[0].icon}@2x.png`} alt="Weather icon" height="85" width="85" ></img></div>
-                    </div>
-                </div>
-            </div>
-        )
-    }
+    handleMouseLeave = index => {
+        this.setState(prevState => {
+            return { isHovered: { ...prevState.isHovered, [index]: false } };
+        });
+    };
 
     render() {
         const {towns} = this.props;
+        const {isHovered} = this.state;
         // console.log( towns)
         return(
             <Layout>
                 <div className='row justify-content-around'>
-                    {towns.map((town, index) => this.renderTown(town, index))}
+                    {towns.map((town, index) => (
+                        <SingleTown
+                            onMouseEnter={() => this.handleMouseEnter(index)}
+                            onMouseLeave={() => this.handleMouseLeave(index)}
+                            town={town}
+                            isHovering={isHovered[index]}
+                            key={index}
+
+                        />
+                    ))}
                 </div>
             </Layout> 
         )
